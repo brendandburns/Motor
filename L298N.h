@@ -10,11 +10,12 @@ class L298N : public MotorController {
         int in2_pin;
     
     public:
-        L298N(int en, in1, in2) : en_pin(en), in1_pin(in1), in2_pin(in2) {}
+        L298N(int en, int in1, int in2);
 
         void setRawSpeed(int speed);
         void forward();
         void reverse();
+        void stop();
 }
 
 #endif // __L298N_H__

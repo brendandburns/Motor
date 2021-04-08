@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "motors.h"
+#include "Motor.h"
 
 #define Kp 0.5
 #define Ki 0.0
@@ -14,11 +14,9 @@
 
 #define SAMPLE_TIME 1
 
-Motor::Motor(int en, int in1, int in2, Encoder *encoder, const char *name, uint8_t max_speed)
+Motor::Motor(MotorController* controller, Encoder *encoder, const char *name, uint8_t max_speed)
 {
-    this->en_pin = en;
-    this->in1_pin = in1;
-    this->in2_pin = in2;
+    this->controller = controller;
     this->_raw_speed = 0;
     this->name = name;
     this->last_time = millis();
@@ -48,24 +46,18 @@ Motor::Motor(int en, int in1, int in2, Encoder *encoder, const char *name, uint8
         this->_observed_speed = this->_desired_speed = 0;
     }
 
-    pinMode(en, OUTPUT);
-    pinMode(in1, OUTPUT);
-    pinMode(in2, OUTPUT);
-
     setRawSpeed(0);
     stop();
 }
 
 void Motor::forward()
 {
-    digitalWrite(this->in1_pin, LOW);
-    digitalWrite(this->in2_pin, HIGH);
+    this->controller->forward();
 }
 
 void Motor::reverse()
 {
-    digitalWrite(this->in1_pin, HIGH);
-    digitalWrite(this->in2_pin, LOW);
+    this->controller->reverse();
 }
 
 void Motor::setMaxSpeed(uint8_t speed) {
@@ -129,13 +121,12 @@ void Motor::setRawSpeed(int speed)
         this->raw_stop();
     }
     this->_raw_speed = speed;
-    analogWrite(this->en_pin, abs(this->_raw_speed) + 20);
+    this->controller->setRawSpeed(speed);
 }
 
 void Motor::raw_stop()
 {
-    digitalWrite(this->in1_pin, LOW);
-    digitalWrite(this->in2_pin, LOW);
+    controller->stop();
 }
 
 void Motor::stop()

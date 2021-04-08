@@ -4,6 +4,8 @@
 #include <Encoder.h>
 #include <PID_v1.h>
 
+#include "MotorController.h"
+
 class Motor
 {
 public:
@@ -21,13 +23,12 @@ private:
 
     // Motors
     const char *name;
-    int en_pin;
-    int in1_pin;
-    int in2_pin;
     int _raw_speed;
     double _observed_speed;
 
     uint8_t max_speed;
+
+    MotorController *controller;
 
     // Encoder
     Encoder *encoder;
@@ -49,7 +50,7 @@ private:
     MotorMode _mode;
 
 public:
-    Motor(int en_pin, int in1_pin, int in2_pin, Encoder *encoder, const char *name, uint8_t max_speed);
+    Motor(MotorController* controller, Encoder *encoder, const char *name, uint8_t max_speed);
 
     void forward();
     void reverse();
