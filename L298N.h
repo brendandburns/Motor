@@ -16,6 +16,6 @@ class L298N : public MotorController {
         void forward();
         void reverse();
         void stop();
-}
+};
 
 #endif // __L298N_H__
