@@ -1,0 +1,16 @@
+{
+  "name": "Motor",
+  "keywords": "motor, controller, encoder",
+  "description": "Simple library for interfacing with motor controller boards",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/brendandburns/Motor.git"
+  },
+  "frameworks": "arduino",
+  "platforms":
+  [
+    "atmelavr",
+    "teensy"
+  ]
+}
