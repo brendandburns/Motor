@@ -11,6 +11,7 @@ class L298N : public MotorController {
     
     public:
         L298N(int en, int in1, int in2);
+        L298N(int in1, int in2);
 
         void setRawSpeed(int speed);
         void forward();
