@@ -1,5 +1,6 @@
 #include "BTS7960.h"
 #include <Arduino.h>
+#include "PWM.h"
 
 BTS7960::BTS7960(int r_en, int l_en, int r_pwm, int l_pwm, bool invert) : r_en_pin(r_en), l_en_pin(l_en), r_pwm_pin(r_pwm), l_pwm_pin(l_pwm), invert(invert)
 {

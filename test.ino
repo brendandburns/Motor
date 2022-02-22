@@ -9,5 +9,5 @@ Encoder enc(3, 4);
 
 Motor m(&controller, &enc, "test", 10);
 
-void setup() {}
-void loop() {}
+// void setup() {}
+// void loop() {}

@@ -1,5 +1,6 @@
 #include "L298N.h"
 #include <Arduino.h>
+#include "PWM.h"
 
 L298N::L298N(int en, int in1, int in2) : en_pin(en), in1_pin(in1), in2_pin(in2)
 {
