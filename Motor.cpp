@@ -14,7 +14,7 @@
 
 #define SAMPLE_TIME 1
 
-Motor::Motor(MotorController* controller, Encoder *encoder, const char *name, uint8_t max_speed)
+Motor::Motor(MotorController* controller, EncoderInterface *encoder, const char *name, uint8_t max_speed)
 {
     this->controller = controller;
     this->_raw_speed = 0;

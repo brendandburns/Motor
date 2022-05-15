@@ -1,10 +1,10 @@
 #ifndef __MOTORS_H__
 #define __MOTORS_H__
 
-#include <Encoder.h>
 #include <PID_v1.h>
 
 #include "MotorController.h"
+#include "EncoderInterface.h"
 
 class Motor
 {
@@ -31,7 +31,7 @@ private:
     MotorController *controller;
 
     // Encoder
-    Encoder *encoder;
+    EncoderInterface *encoder;
     double _position;
 
     // Position PID
@@ -50,7 +50,7 @@ private:
     MotorMode _mode;
 
 public:
-    Motor(MotorController* controller, Encoder *encoder, const char *name, uint8_t max_speed);
+    Motor(MotorController* controller, EncoderInterface *encoder, const char *name, uint8_t max_speed);
 
     void forward();
     void reverse();

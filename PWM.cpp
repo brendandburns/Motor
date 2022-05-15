@@ -1,6 +1,6 @@
 #include <PWM.h>
 
-#ifdef ESP32
+#ifdef ESP32_FOO
 #include <Esp.h>
 
 int findChannel(int pin) {
